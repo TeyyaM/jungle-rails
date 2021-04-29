@@ -1,15 +1,14 @@
-<%= @order.line_items[0].inspect %>
-<%= @order.products[0].inspect %>
 <section class="orders-show">
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    <h3>Thank you for your order!</h4>
+    <h4>Email Address: <%=@order.email%><h5>
+    <h4>Total Price: <%=humanized_money_with_symbol @order.total_cents%><h5>
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-    <h5>Email Address: <%=@order.email%><h5>
-    <h5>Total Price: <%=@order.total_cents%><h5>
+    <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
         <tr>

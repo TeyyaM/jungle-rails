@@ -19,5 +19,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     render :new
   end
-
 end

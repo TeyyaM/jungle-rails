@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   monetize :price_cents, numericality: true
   mount_uploader :image, ProductImageUploader
 
-  has_many :orders, :through => :line_items
+  has_many :orders, through: :line_items
   has_many :line_items
   belongs_to :category
 

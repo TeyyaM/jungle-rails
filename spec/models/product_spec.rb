@@ -17,12 +17,6 @@ RSpec.describe Product, type: :model do
     end
 
     context 'A new product' do
-      context 'before being saved' do
-        it 'should not have an id' do
-          expect(@product.id).to be_nil
-        end
-      end
-
       context 'with all required attributes' do
         it 'saves to the database' do
           @product.save!

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      @message = 'Invalid Entry! Please try again.'
+      @message = user.errors.full_messages[0]
       render :new
     end
   end

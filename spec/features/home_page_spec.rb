@@ -1,25 +1,23 @@
 require 'rails_helper'
-require 'pp'
 
 RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
 
   # SETUP
   before :each do
-    @category = Category.new name: 'Apparel'
-    @category.save!
+    @category = Category.create! name: 'Apparel'
 
     10.times do |n|
-      @product = Product.new(
+      Product.create!(
         name:  Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
+        image: open_asset('apparel1.jpg'),
         quantity: 10,
         price: 64.99,
         category: @category
       )
-      @product.save!
     end
   end
-
+  
   scenario "They see all products" do
     # ACT
     visit root_path
@@ -28,6 +26,6 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     save_screenshot 'test_one_home_page.png'
 
     # VERIFY
-    expect(page).to have_css 'article.product'
+    expect(page).to have_css 'article.product', count: 10
   end
 end

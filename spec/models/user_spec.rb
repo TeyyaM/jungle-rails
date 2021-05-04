@@ -111,6 +111,28 @@ RSpec.describe User, type: :model do
           expect(@user.id).to be_nil
         end
       end
-    end
+    end 
   end
+
+  describe '.authenticate_with_credentials' do
+    before(:all) do
+      @user = User.new(
+        first_name: 'Egg',
+        last_name: 'Eggerson',
+        email: 'egg@egg.com',
+        password: 'egg',
+        password_confirmation: 'egg'
+      )
+      @user.save
+    end
+
+    context 'An attempt to authenticate' do
+      context 'with a valid username and password'
+        it 'will return the user' do
+        expect(User.authenticate_with_credentials('egg@egg.com', 'egg')).to eql(@user)
+        end
+      end 
+
+  end
+
 end

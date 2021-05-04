@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pp'
 
 RSpec.describe User, type: :model do
   describe 'Validations' do
@@ -10,10 +9,9 @@ RSpec.describe User, type: :model do
         email: 'egg@egg.com',
         password: 'egg',
         password_confirmation: 'egg'
-        )
+      )
     end
     context 'A new user' do
-      
       context 'will all valid parameters' do
         it 'should save' do
           @user.save!
@@ -39,7 +37,7 @@ RSpec.describe User, type: :model do
           expect(@user.id).to be_nil
         end
       end
-      
+
       context 'in regards to emails' do
         before(:each) do
           @user2 = User.new(
@@ -48,7 +46,7 @@ RSpec.describe User, type: :model do
             email: 'egg@egg.com',
             password: 'egg',
             password_confirmation: 'egg'
-            )
+          )
         end
 
         context 'with an already registered email' do
@@ -71,48 +69,48 @@ RSpec.describe User, type: :model do
         end
       end
 
-        context 'with no password' do
-          it 'does not save to the database' do
-            @user = User.new(
-              first_name: 'Egg',
-              last_name: 'Eggerson',
-              email: 'egg@egg.com',
-              password_confirmation: 'egg'
-              )
-            @user.save
-            expect(@user.errors.full_messages[0]).to eq('Password can\'t be blank')
-            expect(@user.id).to be_nil
-          end
+      context 'with no password' do
+        it 'does not save to the database' do
+          @user = User.new(
+            first_name: 'Egg',
+            last_name: 'Eggerson',
+            email: 'egg@egg.com',
+            password_confirmation: 'egg'
+          )
+          @user.save
+          expect(@user.errors.full_messages[0]).to eq('Password can\'t be blank')
+          expect(@user.id).to be_nil
         end
-        
-        context 'with no password confirmation' do
-          it 'does not save to the database' do
-            @user = User.new(
-              first_name: 'Egg',
-              last_name: 'Eggerson',
-              email: 'egg@egg.com',
-              password: 'egg'
-              )
-            @user.save
-            expect(@user.errors.full_messages[0]).to eq('Password confirmation can\'t be blank')
-            expect(@user.id).to be_nil
-          end
+      end
+
+      context 'with no password confirmation' do
+        it 'does not save to the database' do
+          @user = User.new(
+            first_name: 'Egg',
+            last_name: 'Eggerson',
+            email: 'egg@egg.com',
+            password: 'egg'
+          )
+          @user.save
+          expect(@user.errors.full_messages[0]).to eq('Password confirmation can\'t be blank')
+          expect(@user.id).to be_nil
         end
-  
-        context 'with non-identical password and password confirmation' do
-          it 'does not save to the database' do
-            @user = User.new(
-              first_name: 'Egg',
-              last_name: 'Eggerson',
-              email: 'egg@egg.com',
-              password: 'egg',
-              password_confirmation: 'EGG'
-              )
-            @user.save
-            expect(@user.errors.full_messages[0]).to eq('Password confirmation doesn\'t match Password')
-            expect(@user.id).to be_nil
-          end
+      end
+
+      context 'with non-identical password and password confirmation' do
+        it 'does not save to the database' do
+          @user = User.new(
+            first_name: 'Egg',
+            last_name: 'Eggerson',
+            email: 'egg@egg.com',
+            password: 'egg',
+            password_confirmation: 'EGG'
+          )
+          @user.save
+          expect(@user.errors.full_messages[0]).to eq('Password confirmation doesn\'t match Password')
+          expect(@user.id).to be_nil
         end
+      end
     end
   end
 end

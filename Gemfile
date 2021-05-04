@@ -45,6 +45,7 @@ group :development, :test do
   gem 'byebug'
   gem 'quiet_assets'
   gem 'dotenv-rails'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

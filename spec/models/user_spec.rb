@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'Validations' do
     before(:each) do
       @user = User.new(
@@ -112,7 +111,7 @@ RSpec.describe User, type: :model do
           expect(@user.id).to be_nil
         end
       end
-    end 
+    end
   end
 
   describe '.authenticate_with_credentials' do
@@ -130,27 +129,26 @@ RSpec.describe User, type: :model do
     context 'An attempt to authenticate' do
       context 'with a valid email and password' do
         it 'will return the user' do
-        expect(User.authenticate_with_credentials('egg@egg.com', 'egg')).to eql(@user)
+          expect(User.authenticate_with_credentials('egg@egg.com', 'egg')).to eql(@user)
         end
-      end 
+      end
       context 'with a valid email with trailing whitespace or capitalization and valid password' do
         it 'will return the user' do
-        expect(User.authenticate_with_credentials('  EgG@eGG.cOm    ', 'egg')).to eql(@user)
+          expect(User.authenticate_with_credentials('  EgG@eGG.cOm    ', 'egg')).to eql(@user)
         end
-      end 
+      end
 
       context 'with an invalid email' do
-      it 'will return nil' do
-      expect(User.authenticate_with_credentials('ham@ham.com', 'egg')).to be_nil
+        it 'will return nil' do
+          expect(User.authenticate_with_credentials('ham@ham.com', 'egg')).to be_nil
+        end
       end
-    end 
 
-    context 'with an invalid password' do
-      it 'will return nil' do
-      expect(User.authenticate_with_credentials('egg@egg.com', 'greeneggs')).to be_nil
+      context 'with an invalid password' do
+        it 'will return nil' do
+          expect(User.authenticate_with_credentials('egg@egg.com', 'greeneggs')).to be_nil
+        end
       end
-    end 
     end
   end
-
 end

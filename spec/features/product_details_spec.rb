@@ -23,13 +23,12 @@ RSpec.feature "Visitor navigates from home page to product detail page", type: :
     visit root_path
     click_link('Details', match: :first)
     
+    # DEBUG
+    # sleep 1
+    # save_screenshot 'test_two_product_details_page.png'
+
     # VERIFY
     expect(page).to have_current_path(product_path(id: 10))
     expect(page).to have_text 'Quantity', count: 1
-    
-    # DEBUG
-    sleep 1
-    save_screenshot 'test_two_product_details_page.png'
-
   end
 end

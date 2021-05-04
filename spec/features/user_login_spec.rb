@@ -17,17 +17,16 @@ RSpec.feature "Visitor logs in and is redirected to home page", type: :feature d
   scenario "They log in" do
     # ACT
     visit login_path
+    expect(page).to have_text 'Login/Register', count: 1
     page.fill_in :session_email, with: 'egg@egg.com'
     page.fill_in :session_password, with: 'egg'
-    # expect(page).to have_text 'Login/Register', count: 1
-    # click_button('Add', match: :first)
+    find('input[value="Login"]').click
     
     # DEBUG
-    # sleep 1
     save_screenshot 'test_four_user_login.png'
 
     # VERIFY
-    # expect(page).to have_current_path(root_path)
-    # expect(page).to have_text 'Egg Eggerson', count: 1
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_text 'Egg Eggerson', count: 1
   end
 end

@@ -31,3 +31,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+!["Register, Logout, and Login"](https://github.com/TeyyaM/jungle-rails/blob/master/docs/register_logout_login.gif)
+
+!["Making Purchases"](https://github.com/TeyyaM/jungle-rails/blob/master/docs/cart_interaction.gif)
+
+!["Admin Only Portions"](https://github.com/TeyyaM/jungle-rails/blob/master/docs/admin.gif)
